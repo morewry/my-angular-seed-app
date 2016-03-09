@@ -1,0 +1,22 @@
+<!doctype html>
+<html ng-app="my-app" ng-controller="AppController as app">
+  <head>
+    <title>@@title@@</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js"></script>
+  </head>
+  <body>
+    <div class="site">
+      <header class="site--head">
+        Header
+      </header>
+      <div class="site--wrap">
+        <nav class="site--menu">
+          <my-nav items="app.navItems" selected="app.currentSection"></my-nav>
+        </nav>
+        <div class="site--body" ng-view>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

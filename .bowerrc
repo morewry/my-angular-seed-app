@@ -1,0 +1,6 @@
+{
+  "registry" : "http://artifactory.otenv.com/artifactory/api/bower/bower-virtual",
+  "resolvers": [
+    "bower-art-resolver"
+  ]
+}
