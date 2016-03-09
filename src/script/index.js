@@ -15,9 +15,10 @@ angular.module("my-app", ["ngRoute", "my-sections", "my-a", "my-b", "my-nav"])
       redirectTo: "/a/1"
     });
   }])
-  .controller("AppController", ["$route", "$rootScope", "Sections", function ($route, $rootScope, Sections) {
+  .controller("AppController", ["$route", "$location", "$rootScope", "Sections", function ($route, $location, $rootScope, Sections) {
     this.navItems = Sections;
     $rootScope.$on("$routeChangeSuccess", () => {
+      console.log($route.current, $route.current.regexp, $route.current.regexp.test($location.path()));
       this.currentSection = $route.current.locals.currentSection;
     });
   }]);
