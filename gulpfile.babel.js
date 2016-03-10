@@ -57,8 +57,9 @@ gulp.task("server", ["options"], () => {
 gulp.task("build.html", ["options"], () => {
   return gulp.src(extendGlob("markup"))
     .pipe(plugins.plumber({errorHandler: shutUp}))
-    .pipe(plugins.mustache(config.options.markup.variables, config.options.markup.opts, config.options.markup.partials))
+    .pipe(plugins.mustache(config.options.markup.mustache.variables, config.options.markup.mustache.opts, config.options.markup.mustache.partials))
     .pipe(plugins.flatten())
+    .pipe(plugins.htmlmin(config.options.markup.minify.opts))
     .pipe(gulp.dest(config.paths.markup.out.dir))
     .pipe(plugins.browserSync.reload({stream: true}))
 });
@@ -66,7 +67,7 @@ gulp.task("build.html", ["options"], () => {
 gulp.task("build.css", ["options"], () => {
   return gulp.src(extendGlob("style"))
     .pipe(plugins.plumber({errorHandler: shutUp}))
-    .pipe(plugins.postcss(config.options.style.processors.map(function (processor) {
+    .pipe(plugins.postcss(config.options.style.postcss.processors.map(function (processor) {
       return processor.call ? plugins[processor.name](processor.opts) : plugins[processor.name];
     })))
     .pipe(plugins.concat(config.paths.style.out.file))
@@ -77,7 +78,7 @@ gulp.task("build.css", ["options"], () => {
 gulp.task("build.js", ["options"], () => {
   return gulp.src(extendGlob("script"))
     .pipe(plugins.plumber({errorHandler: shutUp}))
-    .pipe(plugins.babel(config.options.script.opts))
+    .pipe(plugins.babel(config.options.script.babel.opts))
     .pipe(plugins.uglify())
     .pipe(plugins.concat(config.paths.script.out.file))
     .pipe(gulp.dest(config.paths.style.out.dir))
