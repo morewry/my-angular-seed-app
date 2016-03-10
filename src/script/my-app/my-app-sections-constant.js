@@ -17,3 +17,6 @@ angular.module("my-app")
       route: "/c/:stuff"
     }
   ]);
+
+  // If you don't have to use :params, the objects can be identical
+  // To those required by gui-nav items, and use "href" instead of "route"
