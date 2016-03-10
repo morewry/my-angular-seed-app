@@ -1,0 +1,8 @@
+<div>
+  C HTML
+  <pre>Current Path: {{cctrl.path}}</pre>
+  <pre>Params: {{cctrl.params}}</pre>
+  <pre>Result of Match Path/Route Regex Test: {{cctrl.match}}</pre>
+  <p>This shows how, even if a route has a <code>:param</code> in it, meaning the object in the <code>Section</code> <code>constant</code> can't be the same one passed to <code>gui-nav</code>, it's still possible to easily determine which config object is relevant. And that all that is really necessary for the component to work is the <code>id</code> property.</p>
+  <p>Still, since it's a two-way binding, in such a case, it would be better to set the <code>currentSection</code> to the mapped object, or not use the <code>$route</code> <code>locals</code> and rely fully on <code>$routeChangeSuccess</code> (which, in this example, is in the code to provide the convenience of placing the <code>currentSection</code> directly on the <code>my-app</code> <code>controller</code>.)</p>
+</div>

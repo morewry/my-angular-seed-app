@@ -1,9 +1,13 @@
 angular.module("my-app")
+
   .config(["$routeProvider", "Sections", function ($routeProvider, Sections) {
+
+    // Dynamically build routes from config in Section constant
     Sections.forEach((section) => {
       $routeProvider.when(section.route, {
         templateUrl: `${section.name.toLowerCase()}.html`,
         controller: `${section.name.toUpperCase()}Controller`,
+        controllerAs: `${section.name.toLowerCase()}ctrl`,
         resolve: {
           currentSection: function () {
             return section;
@@ -11,7 +15,9 @@ angular.module("my-app")
         }
       });
     });
+
     $routeProvider.otherwise({
-      redirectTo: "/a/1"
+      redirectTo: "/a"
     });
+
   }]);
