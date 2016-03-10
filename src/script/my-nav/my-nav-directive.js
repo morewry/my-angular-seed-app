@@ -1,12 +1,12 @@
-angular.module("my-nav", [])
-  .directive("myNav", ["myNavController", function (myNavController) {
+angular.module("my-nav")
+  .directive("myNav", function () {
     return {
       scope: {
         items: "=",
         selected: "="
       },
       bindToController: true,
-      controller: myNavController,
+      controller: function () {},
       controllerAs: "Nav",
       template: `
       <ul class="nav">
@@ -18,10 +18,4 @@ angular.module("my-nav", [])
       </ul>
       `
     };
-  }])
-  .factory("myNavController", function () {
-    class myNavController {
-      constructor () {}
-    };
-    return myNavController;
   });

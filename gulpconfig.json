@@ -1,0 +1,82 @@
+{
+  "options": {
+    "plugins": {
+      "opts": {
+        "lazy": false,
+        "pattern": ["gulp-*", "gulp.*", "autoprefixer", "csswring", "browser-sync"]
+      }
+    },
+    "server": {
+      "port": 9697
+    },
+    "style": {
+      "processors": [
+        {
+          "name": "autoprefixer",
+          "call": true,
+          "opts": {}
+        },
+        {
+          "name": "csswring",
+          "call": false
+        }
+      ],
+      "libs": [
+        "bower_components/normalize-css/normalize.css"
+      ]
+    },
+    "script": {
+      "opts": {
+        "presets": ["es2015"]
+      },
+      "libs": [
+        "bower_components/angular/angular.min.js",
+        "bower_components/angular-route/angular-route.min.js"
+      ]
+    },
+    "markup": {
+      "variables": {
+        "title": "Test Title 2"
+      },
+      "partials": {},
+      "opts": {
+        "tags": ["@@", "@@"]
+      }
+    }
+  },
+  "paths": {
+    "server": {
+      "root": "dist/www"
+    },
+    "style": {
+      "in": {
+        "dir": "src/style",
+        "file": "*.css"
+      },
+      "out": {
+        "dir": "dist/www",
+        "file": "style.css"
+      }
+    },
+    "script": {
+      "in": {
+        "dir": "src/script{/**,}",
+        "file": "*.js"
+      },
+      "out": {
+        "dir": "dist/www",
+        "file": "script.js"
+      }
+    },
+    "markup": {
+      "in": {
+        "dir": "src/markup",
+        "file": "*.html"
+      },
+      "out": {
+        "dir": "dist/www",
+        "file": null
+      }
+    }
+  }
+}
