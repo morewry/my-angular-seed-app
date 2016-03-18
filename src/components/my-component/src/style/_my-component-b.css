@@ -1,0 +1,11 @@
+.my-component {
+  display: inline-block;
+  background: blue;
+}
+.my-component--element {
+  display: inline;
+}
+.my-component--element__modifier {
+  display: inline;
+  content: "\\";
+}

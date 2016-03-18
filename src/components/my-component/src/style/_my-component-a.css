@@ -1,0 +1,11 @@
+.my-component {
+  display: block;
+  background: red;
+}
+.my-component--element {
+  display: inline-block;
+}
+.my-component--element__modifier {
+  display: inline;
+  background: url("mybg.jpg");
+}

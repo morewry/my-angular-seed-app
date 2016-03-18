@@ -3,7 +3,7 @@
     "plugins": {
       "opts": {
         "lazy": false,
-        "pattern": ["gulp-*", "gulp.*", "autoprefixer", "csswring", "browser-sync"]
+        "pattern": ["gulp-*", "gulp.*", "autoprefixer", "csswring", "browser-sync", "through2"]
       }
     },
     "server": {

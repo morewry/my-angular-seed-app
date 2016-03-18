@@ -87,6 +87,37 @@ gulp.task("build.js", ["options"], () => {
 
 gulp.task("build", ["build.html", "build.css", "build.js"]);
 
+gulp.task("component", ["options"], () => {
+  return gulp.src("src/components/my-component/src/style/*.css")
+    .pipe(plugins.plumber({errorHandler: shutUp}))
+    .pipe(plugins.postcss(config.options.style.postcss.processors.map(function (processor) {
+      return processor.call ? plugins[processor.name](processor.opts) : plugins[processor.name];
+    })))
+    .pipe(plugins.foreach(function(stream, file) {
+      return stream
+        .pipe(plugins.css2js({
+          prefix: `  $templateCache.put("${path.basename(file.path)}", "`,
+          suffix: `");`,
+          splitOnNewline: false
+        }));
+    }))
+    .pipe(plugins.concat("temp-styles.js"))
+    .pipe(plugins.insert.wrap(`angular.module("component.stylesheets", []).run(['$templateCache', function ($templateCache) {\r\n\r\n`, `\r\n\r\n}]);`))
+    .pipe(plugins.through2.obj(function (file, enc, done) {
+      var filename = file.base.split(path.sep).filter(function(value){
+        return value.indexOf("-") > -1
+      }).pop();
+      file.stem = filename;
+      file.basename = `${filename}.js`;
+      file.path = file.path.replace("temp-styles.js", file.basename);
+      this.push(file);
+      done();
+    }))
+    .pipe(gulp.dest(config.paths.style.out.dir));
+});
+
+
+
 gulp.task("watch.config", () => {
   gulp.watch("./gulpconfig.json", ["build"]);
 });
