@@ -1,10 +1,11 @@
-.b-my-component {
+.my-component {
   display: inline-block;
+  background: blue;
 }
-.b-my-component--element {
+.my-component--element {
   display: inline;
 }
-.b-my-component--element__modifier {
+.my-component--element__modifier {
   display: inline;
   content: "\\";
 }
