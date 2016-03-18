@@ -1,0 +1,10 @@
+.b-my-component {
+  display: inline-block;
+}
+.b-my-component--element {
+  display: inline;
+}
+.b-my-component--element__modifier {
+  display: inline;
+  content: "\\";
+}

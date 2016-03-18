@@ -1,0 +1,10 @@
+.a-my-component {
+  display: block;
+}
+.a-my-component--element {
+  display: inline-block;
+}
+.a-my-component--element__modifier {
+  display: inline;
+  background: url("mybg.jpg");
+}
